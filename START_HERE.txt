@@ -1,0 +1,22 @@
+CATATSAHAM V3 — START HERE
+
+PENTING: ZIP ini memakai SATU arsitektur deployment: Cloudflare Workers Builds + Wrangler.
+Jangan gunakan Cloudflare Pages Functions untuk paket ini.
+
+1) Ekstrak ZIP.
+2) Upload ISI folder ini ke ROOT repository GitHub; jangan upload folder pembungkus sebagai subfolder.
+   Di root GitHub harus tampak: wrangler.jsonc, worker.js, package.json, public/index.html, appsscript/Code.gs.
+3) Di Cloudflare, buka Workers & Pages > catat-saham > Settings > Builds.
+   - Root directory: kosong (karena wrangler.jsonc ada di root repo)
+   - Build command: kosong
+   - Deploy command: npx wrangler deploy
+   - Production branch: branch yang Anda pakai (misalnya main)
+4) Push commit baru atau klik retry build. Pastikan build berhasil dan nama Worker tetap catat-saham.
+5) Setelah deployment baru aktif, tes /healthz dan /api sebelum mengisi environment.
+   Keduanya wajib membalas JSON dengan workerVersion 3.0.0.
+6) Baru tambahkan Production Runtime Variables & Secrets:
+   APPS_SCRIPT_URL (Text) = URL Apps Script Web App berakhiran /exec
+   CATATSAHAM_API_KEY (Secret) = apiKey dari log setupCatatSaham()
+7) Redeploy, lalu tes login akun demo /trading real.
+
+Jangan jalankan setupCatatSaham() berulang-ulang untuk memperbaiki timeout Worker. Setup database terpisah dari deployment frontend.

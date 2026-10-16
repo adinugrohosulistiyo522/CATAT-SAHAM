@@ -1,13 +1,15 @@
 {
   "name": "catatsaham-worker",
   "private": true,
-  "version": "2.0.0",
-  "description": "CatatSaham frontend and Google Apps Script API proxy on Cloudflare Workers",
+  "type": "module",
+  "version": "3.0.0",
+  "description": "CatatSaham Google Apps Script backend and Cloudflare Worker frontend",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "test:worker": "node scripts/test-worker.mjs"
   },
   "devDependencies": {
-    "wrangler": "^4.68.0"
+    "wrangler": "4.68.0"
   }
 }
