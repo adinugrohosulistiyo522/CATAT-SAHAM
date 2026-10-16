@@ -1,10 +1,9 @@
-APPS SCRIPT SETUP
-=================
-1. Buat project baru di script.google.com.
-2. Copy seluruh Code.gs ke file Code.gs.
-3. Jalankan setupCatatSaham() satu kali dan setujui permissions.
-4. Ambil apiKey dan URL spreadsheet dari Execution log: CATATSAHAM_SETUP_RESULT.
-5. Deploy > New deployment > Web app; Execute as Me; Who has access Anyone; salin URL /exec.
-6. Pasang APPS_SCRIPT_URL dan CATATSAHAM_API_KEY di Cloudflare Pages environment variables.
+CATATSAHAM — APPS SCRIPT SETUP
 
-Akun awal: demo_admin / CatatSaham@2026. Ganti password setelah login.
+1. Salin Code.gs ke project Google Apps Script.
+2. Jalankan setupCatatSaham() sekali.
+3. Buka Execution log dan salin URL database serta apiKey dari CATATSAHAM_SETUP_RESULT.
+4. Deploy sebagai Web App: Execute as Me, Who has access Anyone.
+5. Masukkan APPS_SCRIPT_URL dan CATATSAHAM_API_KEY pada Cloudflare Worker Settings > Variables and Secrets > Production.
+
+API key tidak boleh diletakkan pada frontend atau di repository. Cloudflare Worker akan menyisipkannya saat menghubungi Apps Script.
